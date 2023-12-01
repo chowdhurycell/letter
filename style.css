@@ -113,3 +113,59 @@ body{
   transform: rotate(90deg);
   transition-delay: 0.4s;
 }
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #ecf0f1;
+}
+
+.container {
+    position: relative;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #e74c3c;
+    clip-path: polygon(
+        50% 0%,
+        100% 50%,
+        50% 100%,
+        0% 50%
+    );
+    animation: dropHeart 2s ease-in-out forwards;
+    opacity: 0;
+    transform: translateY(0);
+}
+
+#heartCheckbox {
+    display: none; /* Hide the checkbox */
+}
+
+#dropButton {
+    cursor: pointer;
+}
+
+#heartCheckbox:checked + .container .heart {
+    opacity: 1;
+    transform: translateY(100vh);
+}
+
+@keyframes dropHeart {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
